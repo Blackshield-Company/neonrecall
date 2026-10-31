@@ -10,6 +10,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field, model_validator
 
 from neonrecall import __version__
+from neonrecall.ingest import load_documents
 from neonrecall.models import Document
 from neonrecall.service import NeonRecall
 
@@ -82,7 +83,9 @@ def create_app(service: NeonRecall | None = None) -> FastAPI:
             root = Path(service.settings.ingest_root).resolve()
             paths = [_resolve_under(root, p) for p in req.paths]
             try:
-                more = service.ingest_paths(paths, base=root).to_dict()
+                more = service.ingest_documents(
+                    load_documents(paths, base=root, root=root)
+                ).to_dict()
             except ValueError as exc:
                 raise HTTPException(400, str(exc)) from exc
             report = {

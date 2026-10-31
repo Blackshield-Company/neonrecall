@@ -29,15 +29,23 @@ def iter_files(paths: Iterable[str | Path]) -> Iterator[Path]:
             raise FileNotFoundError(path)
 
 
-def load_documents(paths: Iterable[str | Path], base: str | Path | None = None) -> list[Document]:
+def load_documents(
+    paths: Iterable[str | Path],
+    base: str | Path | None = None,
+    *,
+    root: str | Path | None = None,
+) -> list[Document]:
     """Read files into Documents. ``source`` is relative to ``base`` when possible."""
     base_path = Path(base).resolve() if base else None
+    root_path = Path(root).resolve() if root is not None else None
     docs: list[Document] = []
     for file in iter_files(paths):
         resolved = file.resolve()
+        if root_path is not None and not resolved.is_relative_to(root_path):
+            raise ValueError(f"path escapes ingest_root: {file}")
         source = file.as_posix()
         if base_path is not None and resolved.is_relative_to(base_path):
             source = resolved.relative_to(base_path).as_posix()
-        text = file.read_text(encoding="utf-8", errors="replace")
+        text = resolved.read_text(encoding="utf-8", errors="replace")
         docs.append(Document(source=source, text=text))
     return docs
