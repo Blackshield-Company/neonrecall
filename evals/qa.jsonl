@@ -1,0 +1,28 @@
+{"id": "q01", "question": "How do I safely discharge the anode of a CRT before opening it?", "relevant": ["crt-maintenance.md"]}
+{"id": "q02", "question": "What should I do about colored blotches in the corners of the screen?", "relevant": ["crt-maintenance.md"]}
+{"id": "q03", "question": "Why does the monitor show only a single horizontal line?", "relevant": ["crt-maintenance.md"]}
+{"id": "q04", "question": "How are the red, green and blue beams aligned so white text has no fringes?", "relevant": ["crt-maintenance.md"]}
+{"id": "q05", "question": "What pitch standard do the oscillators follow?", "relevant": ["analog-synth-patching.md"]}
+{"id": "q06", "question": "What do the four ADSR envelope stages control?", "relevant": ["analog-synth-patching.md"]}
+{"id": "q07", "question": "How do I get the classic synthwave bass sound?", "relevant": ["analog-synth-patching.md"]}
+{"id": "q08", "question": "How do I make a sweeping pad with an LFO?", "relevant": ["analog-synth-patching.md"]}
+{"id": "q09", "question": "How many clock pulses per quarter note does MIDI send?", "relevant": ["midi-sync.md"]}
+{"id": "q10", "question": "What happens if two devices both act as clock master?", "relevant": ["midi-sync.md"]}
+{"id": "q11", "question": "Arpeggios feel loose and uneven over USB, how do I fix the timing?", "relevant": ["midi-sync.md"]}
+{"id": "q12", "question": "What humidity and temperature should tapes be stored at?", "relevant": ["tape-archiving.md"]}
+{"id": "q13", "question": "The tape squeals and leaves brown residue on the heads, what is wrong?", "relevant": ["tape-archiving.md"]}
+{"id": "q14", "question": "What sample rate and bit depth do we use when digitizing reels?", "relevant": ["tape-archiving.md"]}
+{"id": "q15", "question": "How do I get rid of a steady 60 Hz hum in the speakers?", "relevant": ["studio-power-and-grounding.md"]}
+{"id": "q16", "question": "In what order should the gear be switched on to avoid thumps?", "relevant": ["studio-power-and-grounding.md", "night-shift-operations.md"]}
+{"id": "q17", "question": "What should be done with the modular rack during a thunderstorm?", "relevant": ["studio-power-and-grounding.md"]}
+{"id": "q18", "question": "Which gas makes a sign glow blue?", "relevant": ["neon-sign-care.md"]}
+{"id": "q19", "question": "Why is my neon sign flickering?", "relevant": ["neon-sign-care.md"]}
+{"id": "q20", "question": "How should the glass tubes of a sign be cleaned?", "relevant": ["neon-sign-care.md"]}
+{"id": "q21", "question": "What swing percentage gives a subtle human feel?", "relevant": ["drum-machine-programming.md"]}
+{"id": "q22", "question": "How do I program a four-on-the-floor kick pattern?", "relevant": ["drum-machine-programming.md"]}
+{"id": "q23", "question": "How is the eighties gated reverb snare made?", "relevant": ["drum-machine-programming.md"]}
+{"id": "q24", "question": "What is the fee for cancelling a session late?", "relevant": ["night-shift-operations.md"]}
+{"id": "q25", "question": "What has to be done before leaving at the end of the night?", "relevant": ["night-shift-operations.md"]}
+{"id": "q26", "question": "Who do I call if there is smoke or a burning smell?", "relevant": ["night-shift-operations.md"]}
+{"id": "q27", "question": "Which old drum machines use DIN sync instead of MIDI?", "relevant": ["midi-sync.md"]}
+{"id": "q28", "question": "How often are archive checksums verified?", "relevant": ["tape-archiving.md"]}
