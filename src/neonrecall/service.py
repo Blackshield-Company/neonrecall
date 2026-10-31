@@ -116,9 +116,11 @@ class NeonRecall:
         for doc in docs:
             chunks = chunk_document(doc, self.settings.chunk_size, self.settings.chunk_overlap)
             # Re-ingesting a source replaces it wholesale, so shrinking docs leave no orphans.
+            vectors = self.embedder.embed([c.embedding_text() for c in chunks]) if chunks else []
+            if len(vectors) != len(chunks):
+                raise ValueError("chunks and embeddings must have the same length")
             self.store.delete_document(doc.doc_id)
             if chunks:
-                vectors = self.embedder.embed([c.embedding_text() for c in chunks])
                 self.store.upsert(chunks, vectors)
             report.documents += 1
             report.chunks += len(chunks)

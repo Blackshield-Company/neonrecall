@@ -1,6 +1,26 @@
+import pytest
+
 from neonrecall import NeonRecall
 from neonrecall.config import Settings
 from neonrecall.models import Document
+
+
+@pytest.mark.parametrize("failure", ["exception", "missing_vectors"])
+def test_failed_embedding_preserves_existing_document(service, monkeypatch, failure):
+    service.ingest_documents([Document("doc.md", "Original searchable content")])
+    original = list(service.store.iter_chunks())
+    revision = service.store.revision()
+
+    def fail(texts):
+        if failure == "exception":
+            raise RuntimeError("embedding backend unavailable")
+        return []
+
+    monkeypatch.setattr(service.embedder, "embed", fail)
+    with pytest.raises((RuntimeError, ValueError)):
+        service.ingest_documents([Document("doc.md", "Replacement content")])
+    assert list(service.store.iter_chunks()) == original
+    assert service.store.revision() == revision
 
 
 def test_reingest_replaces_old_chunks(service):
