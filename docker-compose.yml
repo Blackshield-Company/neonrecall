@@ -1,0 +1,32 @@
+# PostgreSQL + pgvector for Neonrecall.
+#   docker compose up -d db
+# Optional local models through Ollama:
+#   docker compose --profile ollama up -d
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: neonrecall
+      POSTGRES_PASSWORD: neonrecall
+      POSTGRES_DB: neonrecall
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U neonrecall -d neonrecall"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ollama"]
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+
+volumes:
+  pgdata:
+  ollama:
